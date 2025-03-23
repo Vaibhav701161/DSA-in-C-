@@ -47,3 +47,14 @@ for (int i =0; i<n;i++){
         }
     }
 }
+
+// better approach
+int maxi;
+int sum = 0;
+for(int i =0;i<n;i++){
+    for(int j=0;j<n;j++){
+        sum += arr[j];
+        maxi = max(maxi,sum);
+        if(sum<0) sum = 0;
+    }
+}
