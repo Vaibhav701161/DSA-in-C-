@@ -58,3 +58,32 @@ for(int i =0;i<n;i++){
         if(sum<0) sum = 0;
     }
 }
+
+// kadane's algorithm
+// Time Complexity: O(n)
+class Solution {
+    public:
+        int maxSubArray(vector<int>& nums) {
+            int sum =0;
+            int maxi = INT_MIN;
+            int n = nums.size();
+            int ansStart =-1;
+            int ansEnd = -1;
+            int start =0;
+    
+            for (int i =0; i<n ; i++){
+                if(sum ==0){start = i;}
+                sum += nums[i];
+                if(sum>maxi){
+                    maxi = sum;
+                    ansStart = start;
+                    ansEnd = nums[i];
+                }
+                
+                if(sum<0){
+                    sum =0;
+                }
+            }
+            return maxi;
+        }
+    };
