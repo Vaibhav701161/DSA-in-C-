@@ -29,3 +29,22 @@ Constraints:
 0 <= nums.length <= 105
 -109 <= nums[i] <= 109
 */
+
+// Brute Force
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
+
+class Solution {
+public:
+int longest =1;
+int cnt = 1;
+for (int i = 0 ; i<n ; i++){
+    int x = nums[i];
+    cnt = 1;
+    while (ls(x+1,nums)){
+        x++;
+        cnt++;
+    }
+    longest = max(longest,cnt);
+}
+}
