@@ -36,3 +36,8 @@ Constraints:
 1 <= nums.length <= 100
 0 <= nums[i] <= 100
 */
+
+// brute force approach:
+// 1. generate all permutations of the array and store them in a vector
+// 2. sort the vector of permutations in lexicographical order
+// 3. find the index of the current permutation in the sorted vector
