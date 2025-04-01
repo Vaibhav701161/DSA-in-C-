@@ -41,3 +41,39 @@ Constraints:
 // 1. generate all permutations of the array and store them in a vector
 // 2. sort the vector of permutations in lexicographical order
 // 3. find the index of the current permutation in the sorted vector
+
+// optimal approach:
+
+class Solution {
+    public:
+        void nextPermutation(std::vector<int>& nums) {
+            int n = nums.size(); // size of the array.
+    
+            // Step 1: Find the break point:
+            int ind = -1; // break point
+            for (int i = n - 2; i >= 0; i--) {
+                if (nums[i] < nums[i + 1]) {
+                    // index i is the break point
+                    ind = i;
+                    break;
+                }
+            }
+            
+            // If no breakpoint is found, reverse the whole array:
+            if (ind == -1) {
+                std::reverse(nums.begin(), nums.end());
+                return;
+            }
+    
+            // Step 2: Find the next greater element and swap it with nums[ind]
+            for (int i = n - 1; i > ind; i--) {
+                if (nums[i] > nums[ind]) {
+                    std::swap(nums[i], nums[ind]);
+                    break;
+                }
+            }
+    
+            // Step 3: Reverse the right half:
+            std::reverse(nums.begin() + ind + 1, nums.end());
+        }
+    };
