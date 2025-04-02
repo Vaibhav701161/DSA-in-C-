@@ -29,3 +29,37 @@ n == matrix[0].length
 1 <= m, n <= 200
 -231 <= matrix[i][j] <= 231 - 1
 */
+
+// brute force approach
+
+function mark row(i){
+    for(int i=0;i<n;i++){
+        if(arr[i][j] !=0){
+            arr[i][j] = -1;
+        }
+    }
+}
+function markrow(j){
+    for (int i=0;i<m;i++){
+        if(arr[i][j]!=0){
+            arr[i][j]=-1;
+        }
+    }
+}
+
+for(i=0;i<n;i++){
+    for(j=0;j<m;j++){
+        if(arr[i][j]==0){
+            markrow(i);
+            markcol(j);
+        }
+    }
+}
+
+for(i=0;i<n;i++){
+    for(j=0;j<m;j++){
+        if(arr[i][j]==-1){
+            arr[i][j]=0;
+        }
+    }
+}
