@@ -63,3 +63,34 @@ for(i=0;i<n;i++){
         }
     }
 }
+
+// time complexity is O(n*m) and space complexity is O(1)
+
+// Better approach
+
+// 1. Use first row and first column as markers
+// 2. Traverse the matrix and mark the first row and first column
+// 3. Traverse the first row and first column to mark the rest of the matrix
+// 4. Traverse the matrix and set the elements to 0 if the first row or first column is marked
+// 5. Set the first row and first column to 0 if they are marked
+// 6. Return the matrix
+
+col[m] = {0};
+row[n] = {0};
+
+for(int i=0;i<n;i+=){
+    for(int j=0;j<m;j++){
+        if(arr[i][j]==0){
+            col[j]=1;
+            row[i]=1;
+        }
+    }
+}
+
+for(int i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+        if(col[j]==1 || row[i]==1){
+            arr[i][j]=0;
+        }
+    }
+}
