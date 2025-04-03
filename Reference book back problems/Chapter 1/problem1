@@ -1,0 +1,113 @@
+/*
+1.1 There are six teams in the football league: the Vultures, the Lions, the Eagles, the Beavers, the Tigers, and the Skunks.
+ The Vultures have already played the Lions and the Eagles; the Lions have also played the Beavers and Skunks.The Tigers have 
+ played the Eagles and Skunks. Each team plays one game per week. Find a schedule so that all teams will have played each 
+ other in the fewest number of weeks. Hint. Create a graph whose vertices are the pairs of teams that have not yet played
+  each other.What should the edges be so that in a legal coloring of the graph, each color can represent the games played in
+   one week?
+*/
+
+/*
+Graph Coloring for Scheduling
+Concepts Needed: Graph representation, graph coloring, scheduling problems.
+
+Resources:
+
+William Fiset's Graph Theory Playlist (YouTube) – Covers graph coloring and related algorithms.
+
+GeeksforGeeks Graph Coloring – Practical examples and code snippets.
+*/
+
+/*
+Applications of Graph Coloring:
+Design a timetable.
+Sudoku.
+Register allocation in the compiler.
+Map coloring.
+Mobile radio frequency assignment
+*/
+
+// remaining matches
+/*Vultures vs Beavers (V-B)
+
+Vultures vs Tigers (V-T)
+
+Vultures vs Skunks (V-S)
+
+Lions vs Tigers (L-T)
+
+Eagles vs Lions (E-L)
+
+Eagles vs Beavers (E-B)
+
+Eagles vs Skunks (E-S)
+
+Beavers vs Tigers (B-T)
+
+Beavers vs Skunks (B-S)
+
+V-B conflicts with: V-T, V-S, E-B, B-T, B-S (because they share V or B)
+
+V-T conflicts with: V-B, V-S, L-T, B-T (share V or T)
+
+V-S conflicts with: V-B, V-T, E-S, B-S (share V or S)
+
+L-T conflicts with: V-T, E-L, B-T (share L or T)
+
+E-L conflicts with: L-T, E-B, E-S (share E or L)
+
+E-B conflicts with: V-B, E-L, E-S, B-T, B-S (share E or B)
+
+E-S conflicts with: V-S, E-L, E-B, B-S (share E or S)
+
+B-T conflicts with: V-B, V-T, L-T, E-B, B-S (share B or T)
+
+B-S conflicts with: V-B, V-S, E-B, E-S, B-T (share B or S)
+
+Give V-B color 1 (Week 1)
+
+V-T can't be color 1 (conflicts with V-B), so give it color 2 (Week 2)
+
+V-S conflicts with both V-B and V-T, so give it color 3 (Week 3)
+
+L-T conflicts with V-T but not V-B, so it can get color 1 (Week 1)
+
+E-L conflicts with L-T, so it can't be color 1. Give it color 2 (Week 2)
+
+E-B conflicts with V-B and E-L, so it needs color 3 (Week 3)
+
+E-S conflicts with V-S, E-L, and E-B, so it needs color 4 (Week 4)
+
+B-T conflicts with V-B, V-T, L-T, and E-B, so it needs color 4 (Week 4)
+
+B-S conflicts with V-B, V-S, E-B, E-S, and B-T, but it doesn't conflict with V-T or E-L, so it can get color 2 (Week 2)
+
+Week 1 (Color 1):
+
+Vultures vs Beavers
+
+Lions vs Tigers
+
+Week 2 (Color 2):
+
+Vultures vs Tigers
+
+Eagles vs Lions
+
+Beavers vs Skunks
+
+Week 3 (Color 3):
+
+Vultures vs Skunks
+
+Eagles vs Beavers
+
+Week 4 (Color 4):
+
+Eagles vs Skunks
+
+Beavers vs Tigers
+
+Final Answer
+We need a minimum of 4 weeks to complete all games!
+/*
