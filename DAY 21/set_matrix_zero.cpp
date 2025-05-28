@@ -66,3 +66,17 @@ for (int i = 0 ; i <n ; i++){
         }
     }
 }
+
+// Better solution using first row and first column as markers
+
+col[m] = {0}; // to mark columns
+row[n] = {0}; // to mark rows
+
+for (int i = 0 ; i < n ; i++){
+    for ( int j = 0 ; j< m ; j++){
+        if (matrix[i][j] == 0){
+            row[i] = 1 ;
+            col[j] = 1; // mark the row and column
+        }
+    }
+}
